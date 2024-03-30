@@ -302,7 +302,7 @@ SELECT * FROM KingsOfJudah;
 INSERT INTO TwentySixthDynastyOfEgypt VALUES ('71', '1', NULL, 'Necho I', '672', '664', 'Encyclopædia Britannica; Egyptian Dynasties Late Period, Mark Millmore', NULL, NULL, '8', 'Encyclopædia Britannica; Egyptian Dynasties Late Period, Mark Millmore', NULL);
 INSERT INTO TwentySixthDynastyOfEgypt VALUES ('72', '2', NULL, 'Psamtik I', '664', '610', 'Encyclopædia Britannica; Psamtik I in hieroglyphs, PHARAOH.SE', NULL, NULL, '54', 'Encyclopædia Britannica; Psamtik I in hieroglyphs, PHARAOH.SE', NULL);
 /* 
-Note: According to Herodotus, Pharaoh Necho II (610 - 595) had King Josiah (640 - 610) of Judah killed in battle at Megiddo. 
+Note: According to Herodotus, Pharaoh Necho II (610 - 595) had King Josiah (640 - 609) of Judah killed in battle at Megiddo. 
 	  According to 2 Kings 23:29 & 2 Chronicles 35:20-24, under the rule of Necho, or Pharaohnechoh, 
 	  King Josiah died at at Megiddo.
 	  - 2 Kings 23:29 KJV "In his days Pharaohnechoh king of Egypt went up against the king of Assyria 
