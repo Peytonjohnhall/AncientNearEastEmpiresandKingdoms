@@ -409,7 +409,8 @@ Note: Make a works cited page in MLA format at the end of the PDF with GIS maps.
 
 
 
-/* Fundamental queries to understand the data: */
+/* Queries fundamental in understanding the data: */
+
 
 -- Let's see the kings of the United Monarchy of the Undivided Kingdom of Israel:
 SELECT King_Number AS "Number", Name AS "King", Reign_Start_Date AS "Reign Beginning", 
@@ -439,25 +440,48 @@ FROM KingsOfJudah;
 -- Let's see the pharaohs of the twenty sixth dynasty of Egypt:
 SELECT King_Number AS "Number", Name AS "Pharaoh", Reign_Start_Date AS "Reign Beginning", 
 	   Reign_End_Date AS "Reign End", Years_As_King AS "Reign Length"
-FROM TwentySecondDynastyOfEgypt;
+FROM TwentySixthDynastyOfEgypt;
 
 -- Let's see the kings of the Neo-Babylonian Empire:
 SELECT King_Number AS "Number", Name AS "King", Reign_Start_Date AS "Reign Beginning", 
 	   Reign_End_Date AS "Reign End", Parent AS "Parent", Years_As_King AS "Reign Length"
 FROM KingsOfNeoBabylonianEmpire;
 
-/* More specific queries for the lab report: */
+
+/* Queries specifically for the lab report final copy: */
 
 
+-- Let's see the kings of the United Monarchy of the Undivided Kingdom of Israel:
+SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
+	Years_As_King AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
+FROM KingsOfUndividedKingdomOfIsraelUnitedMonarchy;
 
+-- Let's see the pharaohs of the twenty second dynasty of Egypt:
+SELECT Name AS "Pharaoh", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)", 
+	Years_As_King AS "Years Reigned", Occurrences_In_Scripture AS "Scriptural Occurrences", Index AS "Citation Index"
+FROM TwentySecondDynastyOfEgypt;
 
+-- Let's see the kings of the Neo-Assyrian Empire:
+SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
+	Years_As_King AS "Years Reigned", Occurrences_In_Scripture AS "Scriptural Occurrences", Index AS "Citation Index"
+FROM KingsOfNeoAssyrianEmpire;
 
+-- Let's see the kings over the 10 Northern Tribes of Israel:
+SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
+	Years_As_King AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
+FROM KingsOfIsraelSamaria;
 
+-- Let's see the kings over the 2 Southern tribes of Judah and Benjamin:
+SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
+	Years_As_King AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
+FROM KingsOfJudah;
 
+-- Let's see the pharaohs of the twenty sixth dynasty of Egypt:
+SELECT Name AS "Pharaoh", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
+	Years_As_King AS "Years Reigned", Occurrences_In_Scripture AS "Scriptural Occurrences", Index AS "Citation Index"
+FROM TwentySixthDynastyOfEgypt;
 
-
-
-
-
-
-
+-- Let's see the kings of the Neo-Babylonian Empire:
+SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
+	Years_As_King AS "Years Reigned", Parent AS "Parent", Occurrences_In_Scripture AS "Scriptural Occurrences", Index AS "Citation Index"
+FROM KingsOfNeoBabylonianEmpire;
