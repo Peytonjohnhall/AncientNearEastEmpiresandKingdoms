@@ -1,0 +1,1100 @@
+---
+title: "Citation Data Scraping for CSE Format"
+author: "Peyton Hall"
+date: "04/03/2024"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Clear the environment}
+rm(list=ls())
+```
+
+```{r Load necessary libraries}
+library(rvest)
+```
+
+```{r Data Scraping Notes}
+# HTML Windows Note: right click --> "view page source"
+# HTML MacBook Pro Note: Press "Develop" --> "show page source" 
+#                              (or shortcut: command + U) --> view HTML code
+```
+
+```{r Citation Indexes 5, 7, 13, 14}
+url <- "https://discoveringegypt.com/ancient-egyptian-kings-queens/egyptian-dynasties-new-kingdom/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author's name link
+author_link <- webpage %>%
+  html_nodes("a:contains('About Mark Millmore')") 
+
+# Extract the author's URL
+author_url <- author_link %>%
+  html_attr("href")
+
+# Extracting author name from URL
+author_name <- gsub("/about-", "", author_url)
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author_name, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+
+```{r Citation Index 8}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/Takelot-I/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+
+```
+
+```{r Citation Index 9}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/osorkon-ii/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+
+```
+
+```{r Citation Index 10}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/shoshenq-iii/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+
+```
+
+```{r Citation Index 11}
+url <- "https://www.historyfiles.co.uk/KingListsAfrica/EgyptAncient.htm"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+author
+
+# Extract DATECREATED
+date_created <- webpage %>%
+  html_nodes("meta[name='DATECREATED']") %>%
+  html_attr("content")
+# Replace slashes with hyphens for proper formatting
+date_created_formatted <- gsub("/", "-", date_created)
+# Citation format
+citation <- paste(author, date_created_formatted, ". ", Title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+citation
+
+```
+
+```{r Citation Index 12}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/pami/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+
+```
+
+```{r Citation Index 15}
+url <- "https://www.britannica.com/biography/Adad-nirari-II"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 16}
+url <- "https://www.britannica.com/biography/Tukulti-Ninurta-II"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 19}
+url <- "https://www.britannica.com/biography/Shamshi-Adad-V"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 20}
+url <- "https://www.britannica.com/biography/Adad-nirari-III"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 20}
+url <- "https://www.bible.ca/manuscripts/bible-archeology-Adad-Nirari-III-king-of-Assyria-stele-inscriptions-statues-810-783bc.htm"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 21}
+url <- "https://bible-history.com/links/shalmaneser-iv-3094"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 22}
+url <- "https://bible-history.com/links/ashur-dan-iii-2217"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 23}
+url <- "https://bible-history.com/links/ashur-nirari-v-2232"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 27}
+url <- "https://www.khanacademy.org/humanities/ancient-art-civilizations/ancient-near-east1/assyrian/a/assyrian-sculpture"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 28}
+url <- "https://www.worldhistory.org/Esarhaddon/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 29}
+url <- "https://www.worldhistory.org/Esarhaddon/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 29}
+url <- "https://en-academic.com/dic.nsf/enwiki/190301"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the publisher name
+publisher <- webpage %>%
+  html_nodes("meta[property='og:site_name']") %>%
+  html_attr("content")
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". ", publisher, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 30}
+url <- "https://en-academic.com/dic.nsf/enwiki/464149"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the publisher name
+publisher <- webpage %>%
+  html_nodes("meta[property='og:site_name']") %>%
+  html_attr("content")
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". ", publisher, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 32}
+url <- "https://www.britannica.com/biography/Ashur-uballit-II"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 32}
+url <- "https://bible-history.com/links/ashur-uballit-ii-2241"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 72}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/psamtik-i/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 73}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/necho-ii/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 74}
+url <- "https://pharaoh.se/ancient-egypt/pharaoh/psamtik-ii/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 76}
+url <- "https://www.britannica.com/place/ancient-Egypt/Ramses-II#:~:text=A%20new%20Saite%20king%2C%20Amasis,buried%20him%20with%20full%20honours"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Indexes 71, 73, 75, 76, 77}
+url <- "https://discoveringegypt.com/ancient-egyptian-kings-queens/egyptian-dynasties-new-kingdom/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author's name link
+author_link <- webpage %>%
+  html_nodes("a:contains('About Mark Millmore')") 
+
+# Extract the author's URL
+author_url <- author_link %>%
+  html_attr("href")
+
+# Extracting author name from URL
+author_name <- gsub("/about-", "", author_url)
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author_name, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 78 & 79}
+url <- "https://www.worldhistory.org/Nebuchadnezzar_II/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 80}
+url <- "https://bible-history.com/links/amel-marduk-biblical-evil-merodach-2155"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 81}
+url <- "https://bible-history.com/links/neriglissar-3007"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 82}
+url <- "https://johnmichaelwiley.wordpress.com/2013/06/22/a-biographical-summary-of-king-belshazzar/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 83}
+url <- "https://www.newworldencyclopedia.org/entry/Nabonidus"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Citation Index 84}
+url <- "https://biblearchaeologyreport.com/2024/01/19/belshazzar-an-archaeological-biography/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Other Citations}
+url <- "https://www.pinterest.com/pin/545709679825590807/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Other Citations}
+url <- "https://www.worldhistory.org/assyria/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Figure I}
+url <- "https://www.historymuseum.ca/cmc/exhibitions/civil/israel/isrel111e.html"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Figure II}
+url <- "https://biblearchaeologyreport.com/2020/01/24/shishak-an-archaeological-biography/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Figure IV}
+url <- "https://smarthistory.org/lamassu-from-the-citadel-of-sargon-ii/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Figure V}
+url <- "https://www.reddit.com/r/PhoeniciaHistoryFacts/comments/kds96n/necho_ii_of_egypt_was_an_ambitious_and/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
+
+```{r Figure VI}
+url <- "https://www.haaretz.com/2015-03-06/ty-article/isis-militants-bulldoze-iraqs-biblical-city-of-nimrud/0000017f-f6fd-d460-afff-ffffa5540000"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 3 April 2024.", sep = "")
+
+citation
+```
