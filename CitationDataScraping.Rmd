@@ -716,7 +716,7 @@ citation
 ```
 
 ```{r Citation Indexes 71, 73, 75, 76, 77}
-url <- "https://discoveringegypt.com/ancient-egyptian-kings-queens/egyptian-dynasties-new-kingdom/"
+url <- "https://discoveringegypt.com/ancient-egyptian-kings-queens/egyptian-dynasties-late-period/"
 
 # Read the HTML content of the webpage
 webpage <- read_html(url)
