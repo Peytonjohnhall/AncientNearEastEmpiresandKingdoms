@@ -204,7 +204,7 @@ INSERT INTO KingsOfIsraelSamaria VALUES ('36', '4', '00000100', 'H425', 'Elah', 
 -- 1 Kings 16:8 KJV "In the twenty and sixth year of Asa king of Judah began Elah the son of Baasha to reign over Israel in Tirzah, two years."
 INSERT INTO KingsOfIsraelSamaria VALUES ('37', '5', '00000101', 'H2174', 'Zimri', '885', '885', NULL, '7 days (suicide)', '1 Kings 16:15-16');
 -- INSERT Tibni was a co- regent. son of Ginath.
-INSERT INTO KingsOfIsraelSamaria VALUES ('38', '6', '00000110(a)', 'H8402', 'Tibni (civil division)', '885', '880', 'Ginath', '5 years', 'The chronology of the Hebrew kings, Thiele, Andrews University.');
+INSERT INTO KingsOfIsraelSamaria VALUES ('38', '6', '00000110(a)', 'H8402', 'Tibni (civil division)', '885', '880', 'Ginath', '5 years', 'chronology of the Hebrew kings, Andrews University');
 /* 1 Kings 16:21 KJV "Then were the people of Israel divided into two parts: half of the people followed Tibni the son of Ginath, to make him king; and half followed Omri." */
 INSERT INTO KingsOfIsraelSamaria VALUES ('39', '6', '00000110(b)', 'H6018', 'Omri (civil division)', '885', '874', NULL, '12', '1 Kings 16:23');
 INSERT INTO KingsOfIsraelSamaria VALUES ('40', '7', '00000111', 'H256', 'Ahab', '874', '853', 'Omri', '22', '1 Kings 16:29');
@@ -291,7 +291,8 @@ INSERT INTO KingsOfJudah VALUES ('65', '14', 'H526', 'Amon', '642', '640', 'Mana
 INSERT INTO KingsOfJudah VALUES ('66', '15', 'H2977', 'Josiah', '640', '609', 'Amon & Jedidah', '8', '2 Kings 22:1, 2 Chronicles 34:1', '31', '2 Kings 22:1, 2 Chronicles 34:1');
 INSERT INTO KingsOfJudah VALUES ('67', '16', 'H3059', 'Jehoahaz', '609', '609', 'Josiah', '23', '2 Kings 23:31, 2 Chronicles 36:2', '3months', '2 Kings 23:31, 2 Chronicles 36:2');
 INSERT INTO KingsOfJudah VALUES ('68', '17', 'H3079', 'Jehoiakim', '609', '598', 'Josiah & Zebudah', '25', '2 Kings 23:36, 2 Chronicles 36:5', '11', '2 Kings 23:36, 2 Chronicles 36:5');
-INSERT INTO KingsOfJudah VALUES ('69', '18', 'H3078', 'Jeconiah (a.k.a. Jehoiachin)', '598', '597 (Siege of Jerusalem)', 'Jehoiakim', 'Either 8 or 18. He became king in 597BC.', '2 Kings 24:8 (18yearsold), 2 Chronicles 36:9 (8yearsold)', '3months & 10days', '2 Kings 24:8 (3monthreign), 2 Kings 24:12 (Surrendured in the eighth year of Nebuchadnezzar II''s reign), 2 Chronicles 36:9 (3month+10dayreign)');
+-- 2 Kings 24:12 (Surrendured in the eighth year of Nebuchadnezzar II''s reign), 2 Chronicles 36:9 (3month+10dayreign)
+INSERT INTO KingsOfJudah VALUES ('69', '18', 'H3078', 'Jeconiah (a.k.a. Jehoiachin)', '598', '597 (Siege of Jerusalem)', 'Jehoiakim', 'Either 8 or 18. He became king around 597BC.', '2 Kings 24:8 (18yearsold), 2 Chronicles 36:9 (8yearsold)', '3months & 10days', '2 Kings 24:8, 2 Kings 24:12, 2 Chronicles 36:9');
 INSERT INTO KingsOfJudah VALUES ('70', '19', 'H6667', 'Mattaniah (renamed Zedekiah in 2 Ki. 24:17)', '597', '586', 'Josiah', '21', '2 Kings 24:18, 2 Chronicles 36:11', '11', '2 Kings 24:18, 2 Chronicles 36:11');
 
 SELECT * FROM KingsOfJudah;
@@ -453,7 +454,7 @@ FROM KingsOfNeoBabylonianEmpire;
 
 -- Let's see the kings of the United Monarchy of the Undivided Kingdom of Israel:
 SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
-	Years_As_King AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
+	CONCAT(Years_As_King, ' (see ', Years_As_King_Citation, ')') AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
 FROM KingsOfUndividedKingdomOfIsraelUnitedMonarchy;
 
 -- Let's see the pharaohs of the twenty second dynasty of Egypt:
@@ -468,12 +469,12 @@ FROM KingsOfNeoAssyrianEmpire;
 
 -- Let's see the kings over the 10 Northern Tribes of Israel:
 SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
-	Years_As_King AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
+	CONCAT(Years_As_King, ' (see ', Years_As_King_Citation, ')') AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
 FROM KingsOfIsraelSamaria;
 
 -- Let's see the kings over the 2 Southern tribes of Judah and Benjamin:
 SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
-	Years_As_King AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
+	CONCAT(Years_As_King, ' (see ', Years_As_King_Citation, ')') AS "Years Reigned", Parent AS "Parent", Index AS "Citation Index"
 FROM KingsOfJudah;
 
 -- Let's see the pharaohs of the twenty sixth dynasty of Egypt:
