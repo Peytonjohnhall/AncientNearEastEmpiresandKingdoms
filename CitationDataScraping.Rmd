@@ -1,7 +1,7 @@
 ---
 title: "Citation Data Scraping for CSE Format"
 author: "Peyton Hall"
-date: "04/05/2024"
+date: "04/04/2024"
 output: html_document
 ---
 
@@ -1020,6 +1020,33 @@ citation
 ```
 
 ```{r Other Citations}
+url <- "https://stock.adobe.com/search?k=megiddo&asset_id=444476073"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 5 April 2024.", sep = "")
+
+citation
+```
+
+```{r Other Citations}
 url <- "https://jewishwebsite.com/featured/march-16-597-bce-jerusalem-falls-to-babylon/53295/"
 
 # Read the HTML content of the webpage
@@ -1154,7 +1181,7 @@ citation <- paste(author, date_published, ". ", title, ". Available from: ", url
 citation
 ```
 
-```{r Figure VI}
+```{r Figure VII}
 url <- "https://www.haaretz.com/2015-03-06/ty-article/isis-militants-bulldoze-iraqs-biblical-city-of-nimrud/0000017f-f6fd-d460-afff-ffffa5540000"
 
 # Read the HTML content of the webpage
