@@ -992,6 +992,33 @@ citation <- paste(author, date_published, ". ", title, ". Available from: ", url
 citation
 ```
 
+```{r Other Citations}
+url <- "https://jewishwebsite.com/featured/march-16-597-bce-jerusalem-falls-to-babylon/53295/"
+
+# Read the HTML content of the webpage
+webpage <- read_html(url)
+
+# Extract the author name
+author <- webpage %>%
+  html_nodes("meta[name='author']") %>%
+  html_attr("content")
+
+# Extract the publication date
+date_published <- webpage %>%
+  html_nodes("meta[name='datePublished']") %>%
+  html_attr("content")
+
+# Extract the title
+title <- webpage %>%
+  html_nodes("title") %>%
+  html_text()
+
+# Citation format
+citation <- paste(author, date_published, ". ", title, ". Available from: ", url, ". Accessed 4 April 2024.", sep = "")
+
+citation
+```
+
 ```{r Figure I}
 url <- "https://www.historymuseum.ca/cmc/exhibitions/civil/israel/isrel111e.html"
 
