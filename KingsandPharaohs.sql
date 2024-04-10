@@ -1,6 +1,12 @@
+-- Author: Peyton J. Hall (C)
 /*
-	First Order Logic.
+Ancient Near East Kings and Pharaohs Data Collection in MYSQL/PostgreSQL.
+The data collection is based on creduble external sources. Due to slight
+discrepancies in reign lengths provided by different sources, first order 
+logic was used to properly determine the reign lengths for individuals, 
+their predecessors, and their successors.
 */
+
 
 CREATE TABLE KingsOfUndividedKingdomOfIsraelUnitedMonarchy (
 	Index INTEGER NOT NULL,
@@ -12,12 +18,10 @@ CREATE TABLE KingsOfUndividedKingdomOfIsraelUnitedMonarchy (
 	Parent VARCHAR(100),
 	Parent_Citation VARCHAR(200),
 	Age_Before_Becoming_King VARCHAR(50),
-    Age_Before_Becoming_King_Citation VARCHAR(60),
-    Years_As_King VARCHAR(50),
-    Years_As_King_Citation VARCHAR(200)
+	Age_Before_Becoming_King_Citation VARCHAR(60),
+	Years_As_King VARCHAR(50),
+	Years_As_King_Citation VARCHAR(200)
 );
-
-DROP TABLE KingsOfUndividedKingdomOfIsraelUnitedMonarchy;
 
 CREATE TABLE TwentySecondDynastyOfEgypt (
 	Index INTEGER NOT NULL,
@@ -28,13 +32,11 @@ CREATE TABLE TwentySecondDynastyOfEgypt (
 	Reign_End_Date VARCHAR(50),
 	Reign_Start_And_End_Date_Citation VARCHAR(200),
 	Age_Before_Becoming_King VARCHAR(50),
-    Age_Before_Becoming_King_Citation VARCHAR(60),
-    Years_As_King VARCHAR(50),
-    Years_As_King_Citation VARCHAR(200),
+	Age_Before_Becoming_King_Citation VARCHAR(60),
+	Years_As_King VARCHAR(50),
+	Years_As_King_Citation VARCHAR(200),
 	Occurrences_In_Scripture VARCHAR(200)
 );
-
-DROP TABLE TwentySecondDynastyOfEgypt;
 
 CREATE TABLE KingsOfNeoAssyrianEmpire (
 	Index INTEGER NOT NULL,
@@ -44,12 +46,10 @@ CREATE TABLE KingsOfNeoAssyrianEmpire (
 	Reign_Start_Date VARCHAR(50),
 	Reign_End_Date VARCHAR(50),
 	Reign_Start_And_End_Date_Citation VARCHAR(200),
-    Years_As_King VARCHAR(50),
-    Years_As_King_Citation VARCHAR(200),
+	Years_As_King VARCHAR(50),
+	Years_As_King_Citation VARCHAR(200),
 	Occurrences_In_Scripture VARCHAR(200)
 );
-
-DROP TABLE KingsOfNeoAssyrianEmpire;
 
 CREATE TABLE KingsOfIsraelSamaria (
 	Index INTEGER NOT NULL,
@@ -60,11 +60,9 @@ CREATE TABLE KingsOfIsraelSamaria (
 	Reign_Start_Date VARCHAR(50),
 	Reign_End_Date VARCHAR(50),
 	Parent VARCHAR(100),
-    Years_As_King VARCHAR(50),
-    Years_As_King_Citation VARCHAR(200)
+	Years_As_King VARCHAR(50),
+	Years_As_King_Citation VARCHAR(200)
 );
-
-DROP TABLE KingsOfIsraelSamaria;
 
 CREATE TABLE KingsOfJudah (
 	Index INTEGER NOT NULL,
@@ -75,12 +73,10 @@ CREATE TABLE KingsOfJudah (
 	Reign_End_Date VARCHAR(50),
 	Parent VARCHAR(100),
 	Age_Before_Becoming_King VARCHAR(50),
-    Age_Before_Becoming_King_Citation VARCHAR(100),
-    Years_As_King VARCHAR(50),
-    Years_As_King_Citation VARCHAR(200)
+	Age_Before_Becoming_King_Citation VARCHAR(100),
+	Years_As_King VARCHAR(50),
+	Years_As_King_Citation VARCHAR(200)
 );
-
-DROP TABLE KingsOfJudah;
 
 CREATE TABLE TwentySixthDynastyOfEgypt (
 	Index INTEGER NOT NULL,
@@ -91,13 +87,11 @@ CREATE TABLE TwentySixthDynastyOfEgypt (
 	Reign_End_Date VARCHAR(50),
 	Reign_Start_And_End_Date_Citation VARCHAR(200),
 	Age_Before_Becoming_King VARCHAR(50),
-    Age_Before_Becoming_King_Citation VARCHAR(60),
-    Years_As_King VARCHAR(50),
-    Years_As_King_Citation VARCHAR(200),
+	Age_Before_Becoming_King_Citation VARCHAR(60),
+	Years_As_King VARCHAR(50),
+	Years_As_King_Citation VARCHAR(200),
 	Occurrences_In_Scripture VARCHAR(200)
 );
-
-DROP TABLE TwentySixthDynastyOfEgypt;
 
 CREATE TABLE KingsOfNeoBabylonianEmpire (
 	Index INTEGER NOT NULL,
@@ -109,12 +103,10 @@ CREATE TABLE KingsOfNeoBabylonianEmpire (
 	Reign_Start_And_End_Date_Citation VARCHAR(200),
 	Parent VARCHAR(100),
 	Parent_Citation VARCHAR(100),
-    Years_As_King VARCHAR(100),
-    Years_As_King_Citation VARCHAR(200),
+	Years_As_King VARCHAR(100),
+	Years_As_King_Citation VARCHAR(200),
 	Occurrences_In_Scripture VARCHAR(200)
 );
-
-DROP TABLE KingsOfNeoBabylonianEmpire;
 
 
 
@@ -133,7 +125,7 @@ INSERT INTO KingsOfUndividedKingdomOfIsraelUnitedMonarchy VALUES ('4', '4', 'H80
 
 
 /*
-Note: First order logic can be used in relating Shishak I to King Rehoboam of Judah:
+Note: Shishak I ransacked Solomon's Temple in the fifth year of King Rehoboam of Judah:
 	- 1 Kings 14:25 KJV "And it came to pass in the fifth year of king Rehoboam, that Shishak king of Egypt came up against Jerusalem:"
 	- 2 Chronicles 12:2 KJV "And it came to pass, that in the fifth year of king Rehoboam Shishak king of Egypt came up against Jerusalem, because they had transgressed against the LORD,"
 */
@@ -176,9 +168,9 @@ INSERT INTO KingsOfNeoAssyrianEmpire VALUES ('29', '15', NULL, 'Ashurbanipal (a.
 INSERT INTO KingsOfNeoAssyrianEmpire VALUES ('30', '16', NULL, 'Aššur-etil-ilāni', '631', '627', 'Academic Dictionaries and Encyclopedias', '4', 'Academic Dictionaries and Encyclopedias', NULL);
 INSERT INTO KingsOfNeoAssyrianEmpire VALUES ('31', '17', NULL, 'Sîn-šar-iškun', '627', '612', 'People | Sin-shar-ishkun - Ancient Mesopotamia', '15', 'People | Sin-shar-ishkun - Ancient Mesopotamia', NULL);
 /* Note: The collapse of the Assyrian Empire occurred in 612 BC following the Battle of Nineveh.
-		 "In 612 B.C., the combined armies of Nabopolassar and the Medes assaulted, captured, and destroyed Nineveh" 
-		 (Missing Links Discovered in Assyrian Tablets 83). Eventually, the Babylonians and the Medes would have their conquest in Mesopotamia.
-		 According to the World History Encyclopedia, in 612 BC, "Nineveh is sacked and burned by combined forces of Babylonians and Medes."
+	 "In 612 B.C., the combined armies of Nabopolassar and the Medes assaulted, captured, and destroyed Nineveh" 
+	 (Missing Links Discovered in Assyrian Tablets 83). Eventually, the Babylonians and the Medes would have their conquest in Mesopotamia.
+	 According to the World History Encyclopedia, in 612 BC, "Nineveh is sacked and burned by combined forces of Babylonians and Medes."
 		 */
 INSERT INTO KingsOfNeoAssyrianEmpire VALUES ('32', '18', NULL, 'Ashur-uballit II', '612', '609', 'Encyclopædia Britannica; Ashur-uballit II, Bible History', '3', 'Encyclopædia Britannica; Ashur-uballit II, Bible History', NULL);
 
@@ -189,10 +181,7 @@ SELECT * FROM KingsOfNeoAssyrianEmpire;
 
 
 
-/*
-https://www.agapebiblestudy.com/charts/Kings%20of%20the%20United%20and%20Divided%20Kingdoms.htm
-https://digitalcommons.andrews.edu/cgi/viewcontent.cgi?article=4850&context=pubs 
-*/
+
 
 -- King_Number, Concordance_ID, Name, Reign_Start_Date, Reign_End_Date, Parent, Years_As_King, Years_As_King_Citation
 INSERT INTO KingsOfIsraelSamaria VALUES ('33', '1', '00000001', 'H3379', 'Jeroboam I', '931', '910', 'Nebat', '22', '1 Kings 14:20');
@@ -227,7 +216,7 @@ INSERT INTO KingsOfIsraelSamaria VALUES ('49', '16', '00010000', 'H4505', 'Menah
 INSERT INTO KingsOfIsraelSamaria VALUES ('50', '17', '00010001', 'H6492', 'Pekah (rival reign)', '752', '732', 'Remaliah', '20', '2 Kings 15:27');
 -- 2 Kings 15:27 KJV "In the two and fiftieth year of Azariah king of Judah Pekah the son of Remaliah began to reign over Israel in Samaria, and reigned twenty years."
 INSERT INTO KingsOfIsraelSamaria VALUES ('51', '18', '00010010', 'H1954', 'Hoshea', '732', '723', 'Elah', '9', '2 Kings 17:1');
--- In the twelfth year of Ahaz king of Judah began Hoshea the son of Elah to reign in Samaria over Israel nine years.
+-- 2 Kings 17:1 KJV "In the twelfth year of Ahaz king of Judah began Hoshea the son of Elah to reign in Samaria over Israel nine years."
 
 SELECT * FROM KingsOfIsraelSamaria;
 
@@ -240,10 +229,7 @@ Note: The 597 BC Siege of Jerusalem is widely documanted through archaeology, th
 	  the Bible states they reigned.
 	  - Daniel 1:1 KJV "In the third year of the reign of Jehoiakim king of Judah came Nebuchadnezzar king of Babylon unto Jerusalem, and besieged it."
 	  - 2 Kings 24:12 KJV "And Jehoiachin the king of Judah went out to the king of Babylon, he, and his mother, and his servants, 
-	  					   and his princes, and his officers: and the king of Babylon took him in the eighth year of his reign."
-						   
-https://www.agapebiblestudy.com/charts/Chart%20of%20the%20Kings%20of%20Judah.htm 
-https://digitalcommons.andrews.edu/cgi/viewcontent.cgi?article=4850&context=pubs 
+	  		       and his princes, and his officers: and the king of Babylon took him in the eighth year of his reign."
 */
 INSERT INTO KingsOfJudah VALUES ('52', '1', 'H7346', 'Rehoboam', '930', '913', 'Solomon', '41', '1 Kings 14:21', '17', '1 Kings 14:21');
 INSERT INTO KingsOfJudah VALUES ('53', '2', 'H29', 'Abijah (a.k.a. Abijam & Abia)', '913', '910', 'Rehoboam', NULL, NULL, '3', '1 Kings 15:1-2, 2 Chronicles 13:1-2');
@@ -291,7 +277,7 @@ INSERT INTO KingsOfJudah VALUES ('65', '14', 'H526', 'Amon', '642', '640', 'Mana
 INSERT INTO KingsOfJudah VALUES ('66', '15', 'H2977', 'Josiah', '640', '609', 'Amon & Jedidah', '8', '2 Kings 22:1, 2 Chronicles 34:1', '31', '2 Kings 22:1, 2 Chronicles 34:1');
 INSERT INTO KingsOfJudah VALUES ('67', '16', 'H3059', 'Jehoahaz', '609', '609', 'Josiah', '23', '2 Kings 23:31, 2 Chronicles 36:2', '3months', '2 Kings 23:31, 2 Chronicles 36:2');
 INSERT INTO KingsOfJudah VALUES ('68', '17', 'H3079', 'Jehoiakim', '609', '598', 'Josiah & Zebudah', '25', '2 Kings 23:36, 2 Chronicles 36:5', '11', '2 Kings 23:36, 2 Chronicles 36:5');
--- 2 Kings 24:12 (Surrendured in the eighth year of Nebuchadnezzar II''s reign), 2 Chronicles 36:9 (3month+10dayreign)
+-- 2 Kings 24:12 (Surrendured in the eighth year of Nebuchadnezzar II''s reign)
 INSERT INTO KingsOfJudah VALUES ('69', '18', 'H3078', 'Jeconiah (a.k.a. Jehoiachin)', '598', '597 (Siege of Jerusalem)', 'Jehoiakim', 'Either 8 or 18. He became king around 597BC.', '2 Kings 24:8 (18yearsold), 2 Chronicles 36:9 (8yearsold)', '3months & 10days', '2 Kings 24:8, 2 Kings 24:12, 2 Chronicles 36:9');
 INSERT INTO KingsOfJudah VALUES ('70', '19', 'H6667', 'Mattaniah (renamed Zedekiah in 2 Ki. 24:17)', '597', '586', 'Josiah', '21', '2 Kings 24:18, 2 Chronicles 36:11', '11', '2 Kings 24:18, 2 Chronicles 36:11');
 
@@ -336,7 +322,7 @@ SELECT * FROM TwentySixthDynastyOfEgypt;
 Siege of Jerusalem - 597 BC
 
 Daniel 1:1 KJV "In the third year of the reign of Jehoiakim king of Judah came 
-				   Nebuchadnezzar king of Babylon unto Jerusalem, and besieged it."
+		Nebuchadnezzar king of Babylon unto Jerusalem, and besieged it."
 */
 
 -- King_Number, Concordance_ID, Name, Reign_Start_Date, Reign_End_Date, Reign_Start_And_End_Date_Citation, Parent, Parent_Citation, Years_As_King, Years_As_King_Citation, Occurrences_In_Scripture
@@ -345,9 +331,9 @@ INSERT INTO KingsOfNeoBabylonianEmpire VALUES ('79', '2', 'H5019', 'Nebuchadnezz
 INSERT INTO KingsOfNeoBabylonianEmpire VALUES ('80', '3', 'H192', 'Evilmerodach (a.k.a. Amel-Marduk)', 'October 562', 'August 560', 'Encyclopædia Britannica, Neo-Babylonian empire; Amel-Marduk, Bible History', 'Nebuchadnezzar II', 'Amel-Marduk, Bible History', '2', 'Encyclopædia Britannica, Neo-Babylonian empire; Amel-Marduk, Bible History', '2 Kings 25:27. Jeremiah 52:31.');
 /*
 2 Kings 25:27 KJV "And it came to pass in the seven and thirtieth year of the captivity of Jehoiachin king of Judah, in the twelfth month, on the seven and twentieth day of the month, that Evilmerodach king of Babylon 
-				   in the year that he began to reign did lift up the head of Jehoiachin king of Judah out of prison;"
+		   in the year that he began to reign did lift up the head of Jehoiachin king of Judah out of prison;"
 Jeremiah 52:31 KJV "And it came to pass in the seven and thirtieth year of the captivity of Jehoiachin king of Judah, in the twelfth month, 
-					in the five and twentieth day of the month, that Evilmerodach king of Babylon in the first year of his reign lifted up the head of Jehoiachin king of Judah, and brought him forth out of prison,"
+		    in the five and twentieth day of the month, that Evilmerodach king of Babylon in the first year of his reign lifted up the head of Jehoiachin king of Judah, and brought him forth out of prison,"
 */
 INSERT INTO KingsOfNeoBabylonianEmpire VALUES ('81', '4', NULL, 'Neriglissar (a.k.a. Nergal-shar-usur)', 'August 560', 'April 556', 'Neriglissar, Bible History', 'Bel-shum-ishkun', 'THE CHALDAEAN DYNASTY, A. T. Olmstead, University of Illinois, Pg. 42', '4', 'Neriglissar, Bible History', NULL);
 INSERT INTO KingsOfNeoBabylonianEmpire VALUES ('82', '5', NULL, 'Labashi-Marduk', 'April 556', 'May 556', 'A Biographical Summary of King Belshazzar, John M. Wiley', 'Neriglissar', 'A Biographical Summary of King Belshazzar, John M. Wiley', '2 months', 'A Biographical Summary of King Belshazzar, John M. Wiley', NULL);
@@ -359,53 +345,6 @@ daniel 5.2 "Belshazzar, whiles he tasted the wine, commanded to bring the golden
 */
 
 SELECT * FROM KingsOfNeoBabylonianEmpire;
-
-
-
-
-
-
-
-
-
-
-
-/* ****** Do not include this code block in the final copy ******
-Note: For mapping the Neo-Babylonian empire, you can find a raster dataset on the fertile crescent. 
-	  Generally, since the Neo-Babylonian Empire's boundaries are not difinitively defined, it is generally accurate to 
-	  just define it along the fertile crescent, as many maps do.
-
-Free natural earth data:
-https://www.naturalearthdata.com/downloads/ 
-https://freegisdata.rtwilson.com
-
-
-Reference System for Judah or Israel:
-Israel 1993 EPSG:4141
-
-Draw the boundaries:
-https://www.youtube.com/watch?v=XLBwsUwiHIo
-Convert to raster polygon:
-https://www.youtube.com/watch?v=UMotVVaSjjs
-Processing -> Toolbox -> Polygonize -> 
-
-To change the color:
-Consider an adobe photoshop free trial after completing each and every map?
-
-Add legend, labels, etc.:
-https://www.youtube.com/watch?v=jDzgKphvTho
-"Project" --> "New Print Layout"
-
-Reference System for Neo-Babylonian Empire:
-GCS_Jordan ?
-GCS_Cressida_2000 ?
-
-Reference Systems for Egypt:
-Egypt 1907 EPSG:4229
-
-Note: Make a works cited page in MLA format at the end of the PDF with GIS maps.
-
-*/ -- ****** Do not include this code block in the final copy ******
 
 
 
@@ -486,3 +425,11 @@ FROM TwentySixthDynastyOfEgypt;
 SELECT Name AS "King", CONCAT(Reign_Start_Date, ' - ', Reign_End_Date) AS "Reign Period (B.C.)",
 	Years_As_King AS "Years Reigned", Parent AS "Parent", Occurrences_In_Scripture AS "Scriptural Occurrences", Index AS "Citation Index"
 FROM KingsOfNeoBabylonianEmpire;
+
+DROP TABLE KingsOfUndividedKingdomOfIsraelUnitedMonarchy;
+DROP TABLE TwentySecondDynastyOfEgypt;
+DROP TABLE KingsOfNeoAssyrianEmpire;
+DROP TABLE KingsOfIsraelSamaria;
+DROP TABLE KingsOfJudah;
+DROP TABLE TwentySixthDynastyOfEgypt;
+DROP TABLE KingsOfNeoBabylonianEmpire;
