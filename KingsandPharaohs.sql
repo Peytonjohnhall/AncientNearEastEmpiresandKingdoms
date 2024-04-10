@@ -1,10 +1,10 @@
 -- Author: Peyton J. Hall (C)
 /*
 Ancient Near East Kings and Pharaohs Data Collection in MYSQL/PostgreSQL.
-The data collection is based on creduble external sources. Due to slight
-discrepancies in reign lengths provided by different sources, first order 
-logic was used to properly determine the reign lengths for individuals, 
-their predecessors, and their successors.
+The data collection is based on credible external sources. Due to slight
+discrepancies in reign lengths provided by different sources (i.e. varying 
+by a few years), first order logic was used to properly determine the reign 
+lengths for these individuals, their predecessors, and their successors. 
 */
 
 
